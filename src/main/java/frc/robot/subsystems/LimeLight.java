@@ -32,8 +32,6 @@ public class LimeLight extends SubsystemBase {
 
     public double[] posData = NetworkTableInstance.getDefault().getTable(m_network_table_key).getEntry("botpose").getDoubleArray(new double[6]);
 
-    public double last_seen_tag_id = 0;
-
     public void setAprilTag() {
         NetworkTableInstance.getDefault().getTable(m_network_table_key).getEntry("pipeline").setNumber(0);
     }
