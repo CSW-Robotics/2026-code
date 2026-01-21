@@ -3,7 +3,9 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
-public class Intake {
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class Intake extends SubsystemBase {
     
     // motor
     SparkMax m_motor;
@@ -35,14 +37,17 @@ public class Intake {
         m_motor.set(Math.min(mMaxSpeed, mSpeed));
     }
 
-    public void ExtendIntake(double angle){
+    public void ExtendIntake (double angle){
         // sets the angle needed, motor speed handled in periodic
+        if (angle > maxAngle){
+            angle = maxAngle;
+        }
         plsAngle = angle;
     }
 
     public void robotPeriodic(){
         // sets max angle
-        if (nowAngle >= 180 || nowAngle <= 180){
+        if (nowAngle >= maxAngle || nowAngle <= -maxAngle){
             ex_motor.set(0);
         } else {
             // makes lower arm thing motor do it's thing
