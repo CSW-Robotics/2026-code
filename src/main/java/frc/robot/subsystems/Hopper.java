@@ -23,9 +23,14 @@ public class Hopper {
         motor_2 = new SparkMax(m2_id, MotorType.kBrushless);
     }
 
-    // Command for Shooter Speed
-    public void MotorShoot() {
-        
+    // Command for Shooter Speed 
+    public void MotorShoot(double speed) {
+        motor_1.set(
+            Math.min(mMaxSpeed, speed)
+        );
+        motor_2.set(
+            Math.min(mMaxSpeed, speed)
+        );
     }
 
 }
