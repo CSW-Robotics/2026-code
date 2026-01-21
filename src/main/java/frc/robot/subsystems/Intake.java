@@ -32,9 +32,9 @@ public class Intake {
         if (nowAngle >= 180 || nowAngle <= 180){
             ex_motor.set(0);
         } else {
-            if (plsAngle > nowAngle){
+            if (plsAngle > nowAngle-2){
                 ex_motor.set(Math.min(-maxAngle / (Math.abs(plsAngle - nowAngle)), exMaxSpeed));
-            } else {
+            } else if (plsAngle < nowAngle+2) {
                 ex_motor.set(Math.min(maxAngle / (Math.abs(plsAngle - nowAngle)), exMaxSpeed));
             }
         }
